@@ -65,11 +65,16 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
   };
 
+  const updateUser = (userData) => {
+    setUser(prev => ({ ...prev, ...userData }));
+  };
+
   const value = {
     user,
     login,
     register,
     logout,
+    updateUser,
     loading,
     error,
     setError
