@@ -4,7 +4,12 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import connectDB from './config/database.js';
 
+import authRoutes from './routes/auth.js';
 
+// ... other imports and middleware
+
+
+// ... error handler
 // Load environment variables
 import { config } from 'dotenv';
 config();
@@ -35,7 +40,7 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.json({ message: 'AgroConnect API is running!' });
 });
-
+app.use('/api/auth', authRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
